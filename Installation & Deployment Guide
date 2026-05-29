@@ -1,0 +1,52 @@
+# Installation & Deployment Guide
+
+This guide details how to initialize the Gemini AI Studio Local Terminal on your machine. Because this project utilizes a Zero-Dependency architecture, the setup process is exceptionally lean.
+
+## Prerequisites
+- **Python 3.8 or higher** installed on your system.
+- An active internet connection to reach Google AI Studio APIs.
+
+## Step 1: Acquiring DEEPSEEK API Key
+To communicate with the DEEPSEEK models, you must obtain an API key:
+1. clic on the key button . It should bring you to search for DEEPSEEK KEY  instructions. 
+2. Sign in with DEEPSEEK account.
+3. Follow their instructions. 
+4. edit you system file to include it in nano ~/.bashrc
+5. its name shall start with DEEPSEEK_API_KEY_
+*(Security Warning: Never commit this key to Git or share it publicly).*
+ 
+
+## Step 2: Deployment
+
+### Ubuntu 24.04 (and modern Linux)
+Ubuntu 24.04 enforces strictly managed global Python environments (PEP 668). This project bypasses virtual environment requirements entirely by utilizing only the standard library.
+1. Open your terminal.
+2. Clone or download the project to your desired directory.
+3. Start the application
+4. I use screen to make it running continuously 
+
+Step_by_Step_Windows_Instructions NOT TESTED a docker would probably be simpler email me if needed :
+  Prerequisite: "The PC must have Python 3 installed."
+  Step_1_Download: "Go to the official Microsoft Store App and search 'Python 3', OR go to python.org and download the Windows installer."
+  Step_2_Critical_Check: "If using the python.org installer, the user MUST check the box 'Add python.exe to PATH' at the very beginning of the installation."
+  Step_3_Execution: 
+    - "Method A: Simply double-click the `app.py` file. A black command window (Terminal) will open and run the server."
+    - "Method B: Open PowerShell or Command Prompt, navigate to the folder, and type `python app.py`."
+  Step_4_Access: "Open Microsoft Edge, Chrome, or Firefox and go to `http://localhost:5001`."
+
+*Note: The UI will automatically detect the presence of the environment variable and populate the dropdown configuration accordingly.*
+
+## 2. Interface Usage
+- **Project Selection:** Use the top navigation bar to select or create a new active project context.
+- **Chat Interface:** Type your queries into the bottom input field. You can utilize standard markdown formatting.
+- **File Attachments:** Use the "Attach File" button to include local documents. The UI processes these locally before attaching their contents to the API payload.
+- **Token Tracking:** The header displays active token counts (Input / Output / Cache). Monitor this to optimize your queries and avoid hitting API limits.
+
+## 3. Session Continuity
+All conversation history is managed locally. 
+- When you chat, the backend automatically serializes the conversation state.
+- Data is stored natively in the `/sessions` folder as `[project_name].json` files.
+- **Backup/Restore:** To backup your chats, simply copy the `/sessions` folder. No database export is required.
+
+## 4. Shutting Down
+To gracefully stop the application, return to the terminal running the server and press `CTRL + C`. All data is already saved locally.
