@@ -16,7 +16,7 @@ Designed for ultimate cross-platform compatibility and minimal technical debt:
 - **Multi-Modal Support:** Easily attach and parse files natively within the browser before sending data to the API.
 - **Context optimisation:** Only send new question with AI output history. Saving context tokens of user input .  
 
-## COST for 50 request of 20K tokens per following table for a last request of 1M token . 
+## COST for 42 request of 20K tokens per following table for a last request of 1M token . 
 ### 📊 Simulation de Context Windows & Coûts Itératifs
 
 Voici la projection des coûts et du comportement du cache lors d'un cycle de développement lourd (incréments constants de ~20k tokens par étape).
