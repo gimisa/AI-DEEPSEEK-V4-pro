@@ -17,16 +17,21 @@ Designed for ultimate cross-platform compatibility and minimal technical debt:
 - **Context optimisation:** Only send new question with AI output history. Saving context tokens of user input .  
 
 ## COST for 50 request of 20K tokens per following table for a last request of 1M token . 
-Table_Comparaison_Corrigée:
-    | Step | Net New Input | Cached History | Generated Output | Total Context End | Step Cost (USD) | Cumulative Cost (USD) | System Status |
-    | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-    | 1 | 20,000 | 0 | 3,970 | 23,970 | $0.01739 | $0.01739 | Stable |
-    | 2 | 20,000 | 23,970 | 3,970 | 47,940 | $0.01840 | $0.03579 | Stable |
-    | 3 | 20,000 | 47,940 | 3,970 | 71,910 | $0.01940 | $0.05519 | Stable |
-    | 10 | 20,000 | 215,730 | 3,970 | 239,700 | $0.02645 | $0.21921 | Stable |
-    | 20 | 20,000 | 455,430 | 3,970 | 479,400 | $0.03652 | $0.53406 | Stable |
-    | 30 | 20,000 | 695,130 | 3,970 | 719,100 | $0.04659 | $0.94959 | Stable |
-    | 40 | 20,000 | 934,830 | 3,970 | 958,800 | $0.05665 | $1.46580 | ⚠️ Critical Warning: Approaching VRAM Limit |
-    | 41 | 20,000 | 958,800 | 3,970 | 982,770 | $0.05766 | $1.52346 | ⚠️ Critical Warning: Edge of Capacity |
-    | 42 | 20,000 | 982,770 | 3,970 | 1,006,740 | $0.05867 | $1.58212 | ❌ **FATAL ERROR:** 1M Context Limit Exceeded |
-    | 50 | 20,000 | 1,174,530 | 3,970 | 1,198,500 | $0.06672 | $2.10276 | 🚫 **INVALID:** Mathematically Impossible Architecture |
+### 📊 Simulation de Context Windows & Coûts Itératifs
+
+Voici la projection des coûts et du comportement du cache lors d'un cycle de développement lourd (incréments constants de ~20k tokens par étape).
+
+| Step | Net New Input | Cached History | Generated Output | Total Context End | Step Cost (USD) | Cumulative Cost (USD) | System Status |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **1** | 20,000 | 0 | 3,970 | 23,970 | $0.01739 | $0.01739 | Stable |
+| **2** | 20,000 | 23,970 | 3,970 | 47,940 | $0.01840 | $0.03579 | Stable |
+| **3** | 20,000 | 47,940 | 3,970 | 71,910 | $0.01940 | $0.05519 | Stable |
+| **10** | 20,000 | 215,730 | 3,970 | 239,700 | $0.02645 | $0.21921 | Stable |
+| **20** | 20,000 | 455,430 | 3,970 | 479,400 | $0.03652 | $0.53406 | Stable |
+| **30** | 20,000 | 695,130 | 3,970 | 719,100 | $0.04659 | $0.94959 | Stable |
+| **40** | 20,000 | 934,830 | 3,970 | 958,800 | $0.05665 | $1.46580 | ⚠️ Critical Warning: Approaching VRAM Limit |
+| **41** | 20,000 | 958,800 | 3,970 | 982,770 | $0.05766 | $1.52346 | ⚠️ Critical Warning: Edge of Capacity |
+| **42** | 20,000 | 982,770 | 3,970 | 1,006,740 | $0.05867 | $1.58212 | ❌ **FATAL ERROR:** 1M Context Limit Exceeded |
+| **50** | 20,000 | 1,174,530 | 3,970 | 1,198,500 | $0.06672 | $2.10276 | 🚫 **INVALID:** Mathematically Impossible Architecture |
+
+> 💡 **Note technique pour le dépôt :** Cette simulation met en évidence l'efficacité du *Prefix Caching* (0 token minimal) sur les architectures de type DeepSeek, tout en illustrant la barrière critique du million de tokens où la structure de la mémoire vive du modèle s'effondre.
