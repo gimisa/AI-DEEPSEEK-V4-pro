@@ -16,3 +16,12 @@ Designed for ultimate cross-platform compatibility and minimal technical debt:
 - **Multi-Modal Support:** Easily attach and parse files natively within the browser before sending data to the API.
 - **Context optimisation:** Only send new question with AI output history. Saving context tokens of user input .  
 
+## COST for 50 request of 20K tokens per following table for a last request of !M toekn . 
+Table_Comparaison_Corrigée:
+  Requête | Historique (k) | Cache hit (k) | Cache miss (k) | Coût entrée ($) | Cumul ($)
+  --------|----------------|---------------|----------------|-----------------|----------
+  1       | 0              | 0             | 20             | 0.0087          | 0.0087
+  2       | 20             | 20            | 20             | 0.0084+0.0087   | 0.0258
+  3       | 40             | 40            | 20             | 0.0168+0.0087   | 0.0513
+  …       | …              | …             | …              | …               | …
+  50      | 980            | 980           | 20             | 0.04116+0.0087  | 2.45184
