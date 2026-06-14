@@ -19,7 +19,9 @@ Designed for ultimate cross-platform compatibility and minimal technical debt:
 ## COST for 42 request of 20K tokens per following table for a last request of 1M token . 
 ### 📊 Simulation de Context Windows & Coûts Itératifs
 
-Voici la projection des coûts et du comportement du cache lors d'un cycle de développement lourd (incréments constants de ~20k tokens par étape).
+Please note Deepseek as a higher count of toekn for the same request mainly because it count its thinking process as output which Gemini does not.
+So you get to 1M token faster but this Application will not retransmit in the context,  the thinking process, nor the user question quewstion of file attached prefiously.  
+Even if those are catched at low cost in usual process they still use up a large portion of the contextual token with a very slight difference in efficiency. 
 
 | Step | Net New Input | Cached History | Generated Output | Total Context End | Step Cost (USD) | Cumulative Cost (USD) | System Status |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
