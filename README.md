@@ -33,4 +33,4 @@ Voici la projection des coûts et du comportement du cache lors d'un cycle de d�
 | **41** | 20,000 | 958,800 | 3,970 | 982,770 | $0.05766 | $1.52346 | ⚠️ Critical Warning: Edge of Capacity |
 | **42** | 20,000 | 982,770 | 3,970 | 1,006,740 | $0.05867 | $1.58212 | ❌ **FATAL ERROR:** 1M Context Limit Exceeded |
 
-> 💡 **Note technique pour le dépôt :** Cette simulation met en évidence l'efficacité du *Prefix Caching* (0 token minimal) sur les architectures de type DeepSeek, tout en illustrant la barrière critique du million de tokens où la structure de la mémoire vive du modèle s'effondre.
+> 💡 **Note :** This situation show  *Prefix Caching* (0 token minimal) for  DeepSeek. .
